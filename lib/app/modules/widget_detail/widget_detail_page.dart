@@ -75,38 +75,38 @@ class WidgetDetailPage extends GetView<WidgetDetailController> {
             // Button to show the widget in a live preview
             Center(
               child: ElevatedButton(
-                onPressed: () {
-                  Get.dialog(
-                    Dialog(
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('Live Preview',
-                                style: TextStyle(fontSize: 20)),
-                            const SizedBox(height: 20),
-                            Container(
-                              width: double.infinity,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: controller.previewWidget,
-                            ),
-                            // Display the widget preview here
-                            const SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () => Get.back(),
-                              child: Text('Close'),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
+                onPressed: () {},
+                //   Get.dialog(
+                //     Dialog(
+                //       child: Container(
+                //         padding: const EdgeInsets.all(16.0),
+                //         child: Column(
+                //           mainAxisSize: MainAxisSize.min,
+                //           children: [
+                //             Text('Live Preview',
+                //                 style: TextStyle(fontSize: 20)),
+                //             const SizedBox(height: 20),
+                //             Container(
+                //               width: double.infinity,
+                //               height: 200,
+                //               decoration: BoxDecoration(
+                //                 color: Colors.grey[300],
+                //                 borderRadius: BorderRadius.circular(10),
+                //               ),
+                //               child: controller.previewWidget,
+                //             ),
+                //             // Display the widget preview here
+                //             const SizedBox(height: 20),
+                //             ElevatedButton(
+                //               onPressed: () => Get.back(),
+                //               child: Text('Close'),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ),
+                //   );
+                // },
                 child: Text('Show Live Preview'),
               ),
             ),
