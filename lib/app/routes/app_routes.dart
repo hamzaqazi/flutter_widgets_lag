@@ -4,4 +4,5 @@
 class AppRoutes {
   // Routes list
   static const home = '/home';
+  static const widgetDetail = '/widget-detail';
 }

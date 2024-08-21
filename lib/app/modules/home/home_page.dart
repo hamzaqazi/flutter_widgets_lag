@@ -1,6 +1,7 @@
 // // homepage.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets_lab/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -14,6 +15,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Widgets Lab'),
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -42,7 +44,7 @@ class HomePage extends GetView<HomeController> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: FutureBuilder(
-              future: Future.delayed(const Duration(seconds: 5)),
+              future: Future.delayed(const Duration(seconds: 2)),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return loadingHorizentalCards();
@@ -51,17 +53,28 @@ class HomePage extends GetView<HomeController> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: List.generate(
-                      5,
-                      (index) => Card(
-                        elevation: 5,
-                        child: SizedBox(
-                          width: 300,
-                          height: 200,
-                          child: Center(
-                            child: Text('Card $index'),
+                      controller.widgetItems.length,
+                      (index) {
+                        final item = controller.widgetItems[index];
+                        return InkWell(
+                          child: Card(
+                            elevation: 5,
+                            child: SizedBox(
+                              width: 300,
+                              height: 200,
+                              child: Center(
+                                child: Text(item.title),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                          onTap: () {
+                            Get.toNamed(
+                              AppRoutes.widgetDetail,
+                              arguments: item,
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 );
@@ -70,7 +83,7 @@ class HomePage extends GetView<HomeController> {
           ),
           Expanded(
             child: FutureBuilder(
-              future: Future.delayed(const Duration(seconds: 5)),
+              future: Future.delayed(const Duration(seconds: 3)),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return loadingListTiles();
